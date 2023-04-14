@@ -44,6 +44,7 @@ function App() {
         mt={1}
         borderRadius={4}
         mx="auto"
+        ml="35%"
       >
         <List>
           <ListItem style={{ marginLeft: "30%" }}>

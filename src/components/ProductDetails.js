@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import React, { useState } from "react";
 
 const ProductDetails = (props) => {
@@ -24,17 +25,44 @@ const ProductDetails = (props) => {
 
   return (
     <form action="" onSubmit={submitHandler}>
-      <label htmlFor="productId">Product ID</label>
-      <input type="number" onChange={productIdHandler} value={productId} />
-      <label htmlFor="productName">Product Name</label>
-      <input type="text" onChange={productNameHandler} value={productName} />
-      <label htmlFor="productPrice">Selling Price</label>
+      <label htmlFor="productId" style={{ color: "white", fontWeight: "bold" }}>
+        Product ID{" "}
+      </label>
+      <input
+        type="number"
+        onChange={productIdHandler}
+        value={productId}
+        style={{ height: "25px" }}
+      />{" "}
+      <label
+        htmlFor="productName"
+        style={{ color: "white", fontWeight: "bold" }}
+      >
+        Product Name{" "}
+      </label>
+      <input
+        type="text"
+        onChange={productNameHandler}
+        value={productName}
+        style={{ height: "25px" }}
+      />{" "}
+      <label
+        htmlFor="productPrice"
+        style={{ color: "white", fontWeight: "bold" }}
+      >
+        Selling Price{" "}
+      </label>
       <input
         type="number"
         onChange={sellingPciceHandler}
         value={sellingPcice}
+        style={{ height: "25px" }}
       />
-      <button type="submit">Add Product</button>
+      {"  "}
+      <Button type="submit" variant="contained" size="small" color="secondary">
+        Add Product
+      </Button>
+      {/* <button type="submit">Add Product</button> */}
     </form>
   );
 };

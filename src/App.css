@@ -2,6 +2,9 @@
   text-align: center;
   margin-top: 20px;
 }
+html {
+  background-color: black;
+}
 
 .App-logo {
   height: 40vmin;

@@ -15,7 +15,7 @@ const Product = (props) => {
   };
   return (
     <Box
-      width="800px"
+      width="400px"
       bgcolor="rgb(0, 255, 255)"
       mt={1}
       borderRadius={4}
@@ -28,7 +28,8 @@ const Product = (props) => {
               <Check style={{ color: "green" }} />
             </IconButton>
             <ListItemText
-              primary={`Product: ${props.name} Selling Price: ${props.price}`}
+              primary={`Product Name: ${props.name}    `}
+              secondary={`Selling Price: ${props.price}`}
             />
           </ListItemButton>
           <IconButton style={{ float: "right" }} onClick={removeItem}>
