@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
-import ProductDetails from "./ProductDetails";
-import ProductList from "./ProductList";
+import ProductDetails from "./components/ProductDetails";
+import ProductList from "./components/ProductList";
 import { Box, List, ListItem, ListItemText } from "@mui/material";
 
 function App() {
