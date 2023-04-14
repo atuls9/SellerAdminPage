@@ -1,23 +1,61 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import ProductDetails from "./ProductDetails";
+import ProductList from "./ProductList";
+import { Box, List, ListItem, ListItemText } from "@mui/material";
 
 function App() {
+  const [productList, setProductList] = useState([]);
+  const [total, setTotal] = useState("0");
+
+  const addProduct = (id, name, price) => {
+    if (id === "" || name === "" || price === "") {
+      return;
+    }
+    const newProduct = {
+      id: id,
+      productName: name,
+      sellingPrice: price,
+    };
+    setProductList([...productList, newProduct]);
+    localStorage.setItem(newProduct.id, JSON.stringify(newProduct));
+    setTotal(+total + +newProduct.sellingPrice);
+  };
+
+  const removeProduct = (id) => {
+    setProductList(
+      productList.filter((product) => {
+        if (id === product.id) {
+          setTotal(+total - +product.sellingPrice);
+        }
+        return id !== product.id;
+      })
+    );
+    localStorage.removeItem(id);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ProductDetails addProduct={addProduct} />
+
+      <Box
+        width="400px"
+        bgcolor="rgb(244, 189, 86)"
+        mt={1}
+        borderRadius={4}
+        mx="auto"
+      >
+        <List>
+          <ListItem style={{ marginLeft: "30%" }}>
+            <ListItemText
+              style={{ fontWeight: "bolder" }}
+              primary={`Total Cost = ₹ ${total}`}
+            />
+          </ListItem>
+        </List>
+      </Box>
+
+      <ProductList list={productList} removeProduct={removeProduct} />
     </div>
   );
 }
